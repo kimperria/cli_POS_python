@@ -23,6 +23,7 @@ IDE: pycharm, VSCode
 ## Demo
 ---
 ### Project Illustrations
+Project flow chart with [Miro](https://miro.com/app/board/uXjVPTFk5d4=/?share_link_id=89794991126) click to view.
 ### Screenshots
 ---
 
