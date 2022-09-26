@@ -32,7 +32,7 @@ Project flow chart with [Miro](https://miro.com/app/board/uXjVPTFk5d4=/?share_li
 ### Installation
 #### How to install this project:
     - Clone this repo, run:
-        git clone 
+        git clone https://github.com/John-Kimani/cli_POS_python.git
     - Move into project folder:
         cd cli_POS_python
     - Open project with IDE i.e VsCode run:
