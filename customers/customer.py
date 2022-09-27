@@ -16,3 +16,15 @@ class CustomerProfile:
         self.customer_name = customer_name
         self.location = location
         self.contact = contact
+
+    def __repr__(self):
+        '''
+        Method to display customer profile with their name
+        '''
+        return '<CustomerProfile {}>'.format(self.customer_name)
+
+    def save_customer(self):
+        '''
+        Method to create and save new customer infomation
+        '''
+        CustomerProfile.customers_list.append(self)
