@@ -28,3 +28,9 @@ class CustomerProfile:
         Method to create and save new customer infomation
         '''
         CustomerProfile.customers_list.append(self)
+
+    def delete_customer(self):
+        '''
+        Method to remove customer instance
+        '''
+        CustomerProfile.customers_list.remove(self)
