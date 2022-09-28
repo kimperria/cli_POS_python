@@ -63,5 +63,23 @@ class TestCustomer(unittest.TestCase):
         found_customer = CustomerProfile.search_customer_by_name('Alien')
         self.assertEqual(found_customer.location, find_customer.location)
 
+    def test_customer_exists(self):
+        '''
+        Test to check if customer account already exists
+        '''
+
+        self.new_customer.save_customer()
+        check_account = CustomerProfile('Kim', 'Nakuru', 123)
+        check_account.save_customer()
+
+        customer_exist = CustomerProfile.customer_exist('Kim')
+        self.assertTrue(customer_exist)
+
+    def test_display_all_customers(self):
+        '''
+        Show all accounts
+        '''
+        self.assertEqual(CustomerProfile.display_customer_accounts(), CustomerProfile.customers_list)
+
 if __name__ == '__main__':
     unittest.main()

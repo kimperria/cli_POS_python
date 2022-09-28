@@ -49,3 +49,21 @@ class CustomerProfile:
         for customer in cls.customers_list:
             if customer.customer_name == customer_name:
                 return customer
+
+    @classmethod
+    def customer_exist(cls, customer_name):
+        '''
+        Method to check customer account by name
+        '''
+        for customer in cls.customers_list:
+            if customer.customer_name == customer_name:
+                return True
+        return False
+
+    @classmethod
+    def display_customer_accounts(cls):
+        '''
+        Show all customer accounts
+        '''
+        return cls.customers_list
+                
