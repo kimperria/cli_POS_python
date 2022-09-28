@@ -1,4 +1,4 @@
-from customer import CustomerProfile
+from .customer import CustomerProfile
 
 def create_customer():
     '''
