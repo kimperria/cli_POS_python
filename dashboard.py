@@ -1,9 +1,10 @@
+from customers import *
+
 def dashboard ():
     '''
     Menu function
     '''
     options = 0
-    print(type(options))
 
 
     while options != "0":
@@ -19,10 +20,19 @@ def dashboard ():
 
         if options == "1":
             print("Products section")
-            print(type(options))
+
+        elif options == "2":
+            print("Customer Section")
+            select_task = input('''
+            1. Create new customer account
+            2. Delete customer account
+            00. Back to dashboard''')
+
+            if select_task == "1":
+                create_customer()
+                print('Creating customer account...')
 
         
         elif options == "0":
             print("Application is closing")
             print("Thank you. See you soon!")
-            print(type(options))
