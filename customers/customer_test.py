@@ -48,10 +48,20 @@ class TestCustomer(unittest.TestCase):
         Test if customer can be deleted
         '''
         self.new_customer.save_customer()
-        delete_customer = CustomerProfile('Ranger', 'Space', 123)
+        delete_customer = CustomerProfile('Ranger', 'Savannah', 123)
         delete_customer.save_customer()
         self.new_customer.delete_customer()
         self.assertEqual(len(CustomerProfile.customers_list), 1)
+    
+    def test_search_customer_by_name(self):
+        '''
+        Search customer in list by name
+        '''
+        self.new_customer.save_customer()
+        find_customer = CustomerProfile('Alien', 'Space', 789)
+        find_customer.save_customer()
+        found_customer = CustomerProfile.search_customer_by_name('Alien')
+        self.assertEqual(found_customer.location, find_customer.location)
 
 if __name__ == '__main__':
     unittest.main()

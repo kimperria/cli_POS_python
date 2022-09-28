@@ -34,3 +34,18 @@ class CustomerProfile:
         Method to remove customer instance
         '''
         CustomerProfile.customers_list.remove(self)
+
+    @classmethod
+    def search_customer_by_name(cls, customer_name):
+        '''
+        Method to find customer by name
+
+        Args: 
+            customer name
+        Return:
+            Customer found in list
+        '''
+        #loop the contact list
+        for customer in cls.customers_list:
+            if customer.customer_name == customer_name:
+                return customer
