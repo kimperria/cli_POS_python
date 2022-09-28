@@ -39,13 +39,18 @@ def dashboard ():
             elif select_task == "3":
                 print('W.I.P')
             elif select_task == "4":
-                print('W.I.P')
+                from customers import delete_customer_account
+                delete_customer_account()
             elif select_task == "00":
                 print('Taking you back to the dashboard')
                 dashboard()
+            else:
+                options == "2"
 
 
         
         elif options == "0":
             print("Application is closing")
             print("Thank you. See you soon!")
+        else:
+            print('Please select a valid option')
