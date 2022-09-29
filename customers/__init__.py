@@ -3,11 +3,12 @@ import json
 customers_database = 'database/customers.json'
 
 def create_customer_id():
-    id = 0
+
     with open(customers_database, 'r') as db:
         items = json.load(db)
         print(items)
         if not items:
+            id = 0
             id += 1
             customer_id = 'C000' + str(id)
             return customer_id
@@ -33,7 +34,8 @@ def create_customer():
     print('Please wait!! Saving to database...')
     # CustomerProfile.save_customer(customer_account_info)
     customer_account = {}
-    customer_account[customer_id] = str(customer_account_info)
+    # Serialize class instance to JSON
+    customer_account[customer_id] = json.dumps(customer_account_info.__dict__)
     print(customer_account)
     with open(customers_database, 'r+') as db:
         items = json.load(db)
