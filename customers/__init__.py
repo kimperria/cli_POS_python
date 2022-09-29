@@ -2,21 +2,47 @@ from .customer import CustomerProfile
 import json
 customers_database = 'database/customers.json'
 
+def create_customer_id():
+    id = 0
+    with open(customers_database, 'r') as db:
+        items = json.load(db)
+        print(items)
+        if not items:
+            id += 1
+            customer_id = 'C000' + str(id)
+            return customer_id
+        
+
 def create_customer():
     '''
     Create new customer
     '''
     print('********************')
     print('Enter requested detail to create a new customer account')
+    customer_id = create_customer_id()
+    print(customer_id)
     name = input('''Enter customer name: ''')
     location = input('''Enter customer location: ''')
     contact = input('''Enter customer contact: ''')
+
     print('Creating customer account...')
 
+    customer_account_info = {}
     customer_account_info = CustomerProfile(customer_name = name, location = location, contact = contact)
+    print(customer_account_info)
     print('Please wait!! Saving to database...')
-    CustomerProfile.save_customer(customer_account_info)
+    # CustomerProfile.save_customer(customer_account_info)
+    customer_account = {}
+    customer_account[customer_id] = str(customer_account_info)
+    print(customer_account)
+    with open(customers_database, 'r+') as db:
+        items = json.load(db)
+        if not items:
+            # items.append(customer_account)
+            json.dump(customer_account, db)
     print("Account for: " + customer_account_info.customer_name + " has been created successfully.")
+
+
     return customer_account_info
 
 
