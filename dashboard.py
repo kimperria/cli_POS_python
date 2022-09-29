@@ -1,5 +1,3 @@
-
-
 def dashboard ():
     '''
     Menu function
@@ -20,6 +18,29 @@ def dashboard ():
 
         if options == "1":
             print("Products section")
+            select_task = input('''
+            1. Create product 
+            2. View product list
+            3. Update product infomation
+            4. Delete product 
+            00. Back to dashboard ''')
+
+            if select_task == "1":
+                from products import create_product
+                create_product()
+            elif select_task == "2":
+                from products import display_all_products
+                display_all_products()
+            elif select_task == "3":
+                print('W.I.P')
+            elif select_task == "4":
+                from products import delete_product
+                delete_product()
+            elif select_task == "00":
+                print('Taking you back to the dashboard')
+                dashboard()
+            else:
+                options == "2"
 
         elif options == "2":
             print("Customer Section")
