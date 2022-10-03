@@ -1,1 +1,39 @@
-{"C0001": "{\"customer_name\": \"Kimani\", \"location\": \"Nairobi\", \"contact\": \"123\"}"}
+[
+    {
+        "C0001": {
+            "name": "Kimperria",
+            "location": "Nairobi",
+            "contact": 254
+        }
+    },
+    {
+        "C0002": {
+            "name": "Test_one",
+            "location": "Kigali",
+            "contact": 250
+        }
+    },
+    {
+        "C0003": {
+            "name": "Test_two",
+            "location": "Kampala",
+            "contact": 255
+        }
+    },
+    {
+        "customerId": "C0001",
+        "customerAccount": "{\"customer_name\": \"Kimani\", \"location\": \"Kim\", \"contact\": \"KIm\"}"
+    },
+    {
+        "customerId": "C0001",
+        "customerAccount": "{\"customer_name\": \"Kimani\", \"location\": \"John\", \"contact\": \"122\"}"
+    },
+    {
+        "customerId": "C0001",
+        "customerAccount": "{\"customer_name\": \"Kimani\", \"location\": \"Kimani\", \"contact\": \"123\"}"
+    },
+    {
+        "customerId": "C0001",
+        "customerAccount": "{\"customer_name\": \"Kimani\", \"location\": \"Kim\", \"contact\": \"123\"}"
+    }
+]

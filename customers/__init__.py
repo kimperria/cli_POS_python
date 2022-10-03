@@ -2,16 +2,26 @@ from .customer import CustomerProfile
 import json
 customers_database = 'database/customers.json'
 
-def create_customer_id():
+def read_customer_database():
+    '''
+    Function to read customers database
+    '''
+    with open(customers_database, 'r') as customers_file:
+        customers = json.load(customers_file)
+        return customers
 
-    with open(customers_database, 'r') as db:
-        items = json.load(db)
-        print(items)
-        if not items:
-            id = 0
-            id += 1
-            customer_id = 'C000' + str(id)
-            return customer_id
+
+
+def create_customer_id():
+    '''
+    Create new for every customer class instance
+    '''
+    customers = read_customer_database()
+    id = 0
+    for customer in customers:
+        id = id + 1
+        customer_id = "C000" + str(id)
+        return customer_id
         
 
 def create_customer():
@@ -22,30 +32,25 @@ def create_customer():
     print('Enter requested detail to create a new customer account')
     customer_id = create_customer_id()
     print(customer_id)
+    customer_account_info = {}
+    data = read_customer_database()
+    customer_account_info["customerId"] = customer_id
+    customer_account_info["customerAccount"] = {}
+    print('list', data)
+    print(customer_account_info)
     name = input('''Enter customer name: ''')
     location = input('''Enter customer location: ''')
     contact = input('''Enter customer contact: ''')
-
     print('Creating customer account...')
-
-    customer_account_info = {}
-    customer_account_info = CustomerProfile(customer_name = name, location = location, contact = contact)
-    print(customer_account_info)
+    new_customer = CustomerProfile(customer_name = name, location = location, contact = contact)
+    #serialize class instance as an object
+    customer_account_info["customerAccount"] = json.dumps(new_customer.__dict__)
+    print('new object', customer_account_info)
+    data.append(customer_account_info)
     print('Please wait!! Saving to database...')
-    # CustomerProfile.save_customer(customer_account_info)
-    customer_account = {}
-    # Serialize class instance to JSON
-    customer_account[customer_id] = json.dumps(customer_account_info.__dict__)
-    print(customer_account)
-    with open(customers_database, 'r+') as db:
-        items = json.load(db)
-        if not items:
-            # items.append(customer_account)
-            json.dump(customer_account, db)
-    print("Account for: " + customer_account_info.customer_name + " has been created successfully.")
+    with open(customers_database, 'w') as customers_file:
+        json.dump(data, customers_file, indent=4)
 
-
-    return customer_account_info
 
 
 
