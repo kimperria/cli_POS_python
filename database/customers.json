@@ -1,8 +1,62 @@
 [
     {
+        "customer_id": "C0001",
+        "customer_name": "Kimani",
+        "location": "Nairobi, Kenya",
+        "contact": "123"
+    },
+    {
+        "customer_id": "C0002",
+        "customer_name": "John",
+        "location": "Kigali",
+        "contact": "456"
+    },
+    {
+        "customer_id": "C0003",
+        "customer_name": "James",
+        "location": "Arusha",
+        "contact": "789"
+    },
+    {
+        "customer_id": "C0004",
+        "customer_name": "Rachael",
+        "location": "Maputo",
+        "contact": "147"
+    },
+    {
+        "customer_id": "C0005",
+        "customer_name": "Harry",
+        "location": "Capetown",
+        "contact": "258"
+    },
+    {
+        "customer_id": "C0006",
+        "customer_name": "Aura",
+        "location": "Abuja",
+        "contact": "369"
+    },
+    {
+        "customer_id": "C0007",
+        "customer_name": "Agnes",
+        "location": "Bujumbura",
+        "contact": "321"
+    },
+    {
+        "customer_id": "C0008",
+        "customer_name": "Paul",
+        "location": "Tunis",
+        "contact": "654"
+    },
+    {
         "customer_id": "C0009",
-        "customer_name": "Jane",
-        "location": "Doe",
-        "contact": "USA"
+        "customer_name": "Maria",
+        "location": "Lusaka",
+        "contact": "987"
+    },
+    {
+        "customer_id": "C00010",
+        "customer_name": "Dan",
+        "location": "Kilifi",
+        "contact": "753"
     }
 ]

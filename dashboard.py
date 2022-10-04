@@ -47,8 +47,9 @@ def dashboard ():
             select_task = input('''
             1. Create new customer account 
             2. View all customers
-            3. Update customer account
-            4. Delete customer account 
+            3. Find customer by name
+            4. Update customer account 
+            5. Delete customer account
             00. Back to dashboard ''')
 
             if select_task == "1":
@@ -58,10 +59,14 @@ def dashboard ():
                 from customers import display_all_customer_accounts
                 display_all_customer_accounts()
             elif select_task == "3":
-                print('W.I.P')
+                from customers import search_customer_by_name
+                search_customer_by_name()
             elif select_task == "4":
+                print("W.I.P")
+            elif select_task == "5":
                 from customers import delete_customer_account
                 delete_customer_account()
+
             elif select_task == "00":
                 print('Taking you back to the dashboard')
                 dashboard()

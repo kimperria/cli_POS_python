@@ -37,9 +37,14 @@ class CustomerProfile:
             customer_accounts = json.load(customers_file)
             try:
                 if customer_accounts == []:
-                    print("There are no customer accounts in database")
                     id = 1
                     customer_id = 'C000' + str(id)
+                    customer = {
+                            "customer_id": customer_id,
+                            "customer_name":customer_name,
+                            "location": location,
+                            "contact":contact
+                        }
                 elif customer_accounts !=[]:
                     id = 1
                     for customer in customer_accounts:
@@ -99,10 +104,9 @@ class CustomerProfile:
                 print(f"Customer Location: {location}")
                 print(f"Customer Contact: {contact}")
                 print('\n\n')
-                i = i + 1
                 try:
                     if customer.get("customer_id") == id:
-                        customer_accounts.pop(customer_accounts.index(customer))
+                        customer_accounts.remove(customer)
                         print(customer)
                     with open(customers_database, 'w') as customers_file:
                         json.dump(customer_accounts, customers_file, indent=4)
@@ -119,25 +123,36 @@ class CustomerProfile:
         Return:
             Customer found in list
         '''
-        #loop the contact list
-        for customer in cls.customers_list:
-            if customer.customer_name == customer_name:
-                return customer
+        customers_database = 'database/customers.json'
+        isPresent = False
+        with open(customers_database, 'r') as customers_file:
+            customer_accounts = json.load(customers_file)
+            for customer in customer_accounts:
+                try: 
+                    if customer.get("customer_name") == customer_name:
+                        isPresent = True
+                        print(customer)
+                except:
+                    print("No customer with such name")
+            return isPresent
+
+
 
     @classmethod
     def customer_exist(cls, customer_name):
         '''
         Method to check customer account by name
         '''
-        for customer in cls.customers_list:
-            if customer.customer_name == customer_name:
-                return True
-        return False
+        customers_database = 'database/customers.json'
+        isPresent = False
+        with open(customers_database, 'r') as customers_file:
+            customer_accounts = json.load(customers_file)
+            for customer in customer_accounts:
+                try:
+                    if customer.get("customer_name") == customer_name:
+                        isPresent = True
+                except:
+                    print("No customer with such name")
+            return isPresent
 
-    # @classmethod
-    # def display_customer_accounts(cls):
-    #     '''
-    #     Show all customer accounts
-    #     '''
-    #     return cls.customers_list
                 
