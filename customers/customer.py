@@ -72,13 +72,18 @@ class CustomerProfile:
         customers_database = 'database/customers.json'
         with open(customers_database, 'r') as customers_file:
             customer_accounts = json.load(customers_file)
-        try:
-            if customer_accounts == []:
-                print('No customers in data base')
-            elif customer_accounts != []:
-                print(customer_accounts)
-        except:
-            print("Cannot read file")
+            i = 0
+            for customer in customer_accounts:
+                id = customer["customer_id"]
+                name = customer["customer_name"]
+                location = customer["location"]
+                contact = customer["contact"]
+                print(f"Customer ID: {id}")
+                print(f"Customer Name: {name}")
+                print(f"Customer Location: {location}")
+                print(f"Customer Contact: {contact}")
+                print('\n\n')
+                i = i + 1
 
     @classmethod
     def search_customer_by_name(cls, customer_name):

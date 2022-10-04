@@ -18,34 +18,12 @@ def create_customer():
     '''
     print('********************')
     print('Enter requested detail to create a new customer account')
-    data = read_customer_database()
     name = input('''Enter customer name: ''')
     location = input('''Enter customer location: ''')
     contact = input('''Enter customer contact: ''')
     print('Creating customer account...')
     try:
-        new_customer = CustomerProfile.save_customer(name, location, contact)
-        # if data == []:
-        #     print('No customers in DB')
-        #     id = 1
-        #     customer_id = "C000" + str(id)
-        # elif data != []:
-        #     id = 1
-        #     for customer in data:
-        #         id = id + 1
-        #         customer_id = "C000" + str(id)
-        #         customer_account_info = {}
-        #         customer = {
-        #             "customer_name": name,
-        #             "location": location,
-        #             "contact": contact
-        #         }
-        #     customer_account_info[customer_id] = customer
-        #     data.append(customer_account_info)
-        #     print('Please wait!! Saving to database...')
-        #     with open(customers_database, "w") as customer_file:
-        #         json.dump(data, customer_file, indent=4)
-        #     print("Customer Account Created Successfully")
+        CustomerProfile.save_customer(name, location, contact)
     except:
         print("Unable to create customer")
 
@@ -57,18 +35,7 @@ def display_all_customer_accounts():
     '''
     Show all customer accounts
     '''
-    # all_accounts = CustomerProfile.display_customer_accounts()
-    all_accounts = read_customer_database()
-    print('List of all customer accounts')
-    # print(all_accounts)
-    for customer in all_accounts:
-        for account in customer.keys():
-            # print(f'customer ac: {account}')
-            id = account
-            for info in customer.values():
-                print(f'info {info}')
-            print(customer)
-        # print(f'Customer ID : {id}')
+    CustomerProfile.show_all_customers()
 
 
 
