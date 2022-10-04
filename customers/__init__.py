@@ -10,18 +10,6 @@ def read_customer_database():
         customers = json.load(customers_file)
         return customers
 
-
-
-def create_customer_id():
-    '''
-    Create new for every customer class instance
-    '''
-    customers = read_customer_database()
-    id = 0
-    for customer in customers:
-        id = id + 1
-        customer_id = "C000" + str(id)
-        return customer_id
         
 
 def create_customer():
@@ -30,26 +18,37 @@ def create_customer():
     '''
     print('********************')
     print('Enter requested detail to create a new customer account')
-    customer_id = create_customer_id()
-    print(customer_id)
-    customer_account_info = {}
     data = read_customer_database()
-    customer_account_info["customerId"] = customer_id
-    customer_account_info["customerAccount"] = {}
-    print('list', data)
-    print(customer_account_info)
     name = input('''Enter customer name: ''')
     location = input('''Enter customer location: ''')
     contact = input('''Enter customer contact: ''')
     print('Creating customer account...')
-    new_customer = CustomerProfile(customer_name = name, location = location, contact = contact)
-    #serialize class instance as an object
-    customer_account_info["customerAccount"] = json.dumps(new_customer.__dict__)
-    print('new object', customer_account_info)
-    data.append(customer_account_info)
-    print('Please wait!! Saving to database...')
-    with open(customers_database, 'w') as customers_file:
-        json.dump(data, customers_file, indent=4)
+    try:
+        if data == []:
+            print('No customers in DB')
+            id = 1
+            customer_id = "C000" + str(id)
+        elif data != []:
+            id = 1
+            for customer in data:
+                id = id + 1
+                customer_id = "C000" + str(id)
+                customer_account_info = {}
+                customer = {
+                    "name": name,
+                    "location": location,
+                    "contact": contact
+                }
+            customer_account_info[customer_id] = customer
+            print(customer_account_info)
+            data.append(customer_account_info)
+            print(data)
+            print('Please wait!! Saving to database...')
+            with open(customers_database, "w") as customer_file:
+                json.dump(data, customer_file, indent=4)
+            print("Customer Account Created Successfully")
+    except:
+        print("Unable to create customer")
 
 
 

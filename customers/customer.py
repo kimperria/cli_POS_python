@@ -21,7 +21,7 @@ class CustomerProfile:
         '''
         Method to display customer profile with their name
         '''
-        return '<CustomerProfile {}>'.format(self.customer_name)
+        return f'name:{self.customer_name}, location:{self.location}, contact:{self.contact}'
 
     def save_customer(self):
         '''

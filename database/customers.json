@@ -21,19 +21,20 @@
         }
     },
     {
-        "customerId": "C0001",
-        "customerAccount": "{\"customer_name\": \"Kimani\", \"location\": \"Kim\", \"contact\": \"KIm\"}"
+        "C0004": "{\"customer_name\": \"Kimani\", \"location\": \"ki\", \"contact\": \"ki\"}"
     },
     {
-        "customerId": "C0001",
-        "customerAccount": "{\"customer_name\": \"Kimani\", \"location\": \"John\", \"contact\": \"122\"}"
+        "C0005": {
+            "name": "Kimani",
+            "location": "kim",
+            "contact": "14"
+        }
     },
     {
-        "customerId": "C0001",
-        "customerAccount": "{\"customer_name\": \"Kimani\", \"location\": \"Kimani\", \"contact\": \"123\"}"
-    },
-    {
-        "customerId": "C0001",
-        "customerAccount": "{\"customer_name\": \"Kimani\", \"location\": \"Kim\", \"contact\": \"123\"}"
+        "C0006": {
+            "name": "Test ",
+            "location": "45",
+            "contact": "55"
+        }
     }
 ]
