@@ -1,6 +1,4 @@
 import json
-
-
 class CustomerProfile:
     '''
     Class that helps to generate instances for creating a new customer account on this application
@@ -26,6 +24,7 @@ class CustomerProfile:
         Method to display customer profile with their name
         '''
         return f'name:{self.customer_name}, location:{self.location}, contact:{self.contact}'
+    
 
     @classmethod
     def save_customer(cls, customer_name, location, contact):
@@ -66,6 +65,22 @@ class CustomerProfile:
         CustomerProfile.customers_list.remove(self)
 
     @classmethod
+    def show_all_customers(cls):
+        '''
+        Method to show all customer accounts
+        '''
+        customers_database = 'database/customers.json'
+        with open(customers_database, 'r') as customers_file:
+            customer_accounts = json.load(customers_file)
+        try:
+            if customer_accounts == []:
+                print('No customers in data base')
+            elif customer_accounts != []:
+                print(customer_accounts)
+        except:
+            print("Cannot read file")
+
+    @classmethod
     def search_customer_by_name(cls, customer_name):
         '''
         Method to find customer by name
@@ -90,10 +105,10 @@ class CustomerProfile:
                 return True
         return False
 
-    @classmethod
-    def display_customer_accounts(cls):
-        '''
-        Show all customer accounts
-        '''
-        return cls.customers_list
+    # @classmethod
+    # def display_customer_accounts(cls):
+    #     '''
+    #     Show all customer accounts
+    #     '''
+    #     return cls.customers_list
                 
