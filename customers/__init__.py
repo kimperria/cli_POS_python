@@ -44,26 +44,28 @@ def delete_customer_account():
     '''
     Delete account by name
     '''
-    customer_account_name = input('Enter customer name: ')
-    account_exist = CustomerProfile.customer_exist(customer_account_name)
-    if account_exist == True:
-        find_account = CustomerProfile.search_customer_by_name(customer_name=customer_account_name)
-        print('Are you sure you want to delete ' + str(find_account.customer_name) + '\'s account?')
-        print('This account information will forever be lost!!!')
-        print('''Enter 1 to delete account 
-        or 
-Enter 00 to exit''')
-        danger = 0 
-        while danger != "0":
-            danger = input()
-            if danger == "1":
-                CustomerProfile.delete_customer(find_account)
-                print("Account has been deleted!")
-            elif danger == "00":
-                delete_customer_account()
-            break
-    elif account_exist == False:
-        print('Seems the account you searched for does not exist')
+    id = input("Enter customer ID: ")
+    CustomerProfile.delete_customer(id)
+#     customer_account_name = input('Enter customer name: ')
+#     account_exist = CustomerProfile.customer_exist(customer_account_name)
+#     if account_exist == True:
+#         find_account = CustomerProfile.search_customer_by_name(customer_name=customer_account_name)
+#         print('Are you sure you want to delete ' + str(find_account.customer_name) + '\'s account?')
+#         print('This account information will forever be lost!!!')
+#         print('''Enter 1 to delete account 
+#         or 
+# Enter 00 to exit''')
+#         danger = 0 
+#         while danger != "0":
+#             danger = input()
+#             if danger == "1":
+#                 CustomerProfile.delete_customer(find_account)
+#                 print("Account has been deleted!")
+#             elif danger == "00":
+#                 delete_customer_account()
+#             break
+#     elif account_exist == False:
+#         print('Seems the account you searched for does not exist')
 
 
 

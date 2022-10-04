@@ -1,4 +1,5 @@
 import json
+from textwrap import indent
 class CustomerProfile:
     '''
     Class that helps to generate instances for creating a new customer account on this application
@@ -58,12 +59,6 @@ class CustomerProfile:
             except:
                 print("Unable to create customer account")
 
-    def delete_customer(self):
-        '''
-        Method to remove customer instance
-        '''
-        CustomerProfile.customers_list.remove(self)
-
     @classmethod
     def show_all_customers(cls):
         '''
@@ -84,6 +79,35 @@ class CustomerProfile:
                 print(f"Customer Contact: {contact}")
                 print('\n\n')
                 i = i + 1
+
+    @classmethod
+    def delete_customer(cls, id):
+        '''
+        Method to remove customer instance
+        '''
+        customers_database = 'database/customers.json'
+        with open(customers_database, 'r') as customers_file:
+            customer_accounts = json.load(customers_file)
+            i = 0
+            for customer in customer_accounts:
+                id = customer["customer_id"]
+                name = customer["customer_name"]
+                location = customer["location"]
+                contact = customer["contact"]
+                print(f"Customer ID: {id}")
+                print(f"Customer Name: {name}")
+                print(f"Customer Location: {location}")
+                print(f"Customer Contact: {contact}")
+                print('\n\n')
+                i = i + 1
+                try:
+                    if customer.get("customer_id") == id:
+                        customer_accounts.pop(customer_accounts.index(customer))
+                        print(customer)
+                    with open(customers_database, 'w') as customers_file:
+                        json.dump(customer_accounts, customers_file, indent=4)
+                except:
+                    print("Unable to delete customer")
 
     @classmethod
     def search_customer_by_name(cls, customer_name):

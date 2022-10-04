@@ -1,65 +1,8 @@
 [
     {
-        "C0001": {
-            "name": "Kimperria",
-            "location": "Nairobi",
-            "contact": 254
-        }
-    },
-    {
-        "C0002": {
-            "name": "Test_one",
-            "location": "Kigali",
-            "contact": 250
-        }
-    },
-    {
-        "C0003": {
-            "name": "Test_two",
-            "location": "Kampala",
-            "contact": 255
-        }
-    },
-    {
-        "C0004": "{\"customer_name\": \"Kimani\", \"location\": \"ki\", \"contact\": \"ki\"}"
-    },
-    {
-        "C0005": {
-            "name": "Kimani",
-            "location": "kim",
-            "contact": "14"
-        }
-    },
-    {
-        "C0006": {
-            "name": "Test ",
-            "location": "45",
-            "contact": "55"
-        }
-    },
-    {
-        "C0007": {
-            "customer_name": "Kimani",
-            "location": "kainid",
-            "contact": "ndia"
-        }
-    },
-    {
-        "customer_id": "C0008",
-        "customer_name": "Kimani",
-        "location": "ki",
-        "contact": "ki"
-    },
-    {
         "customer_id": "C0009",
         "customer_name": "Jane",
         "location": "Doe",
         "contact": "USA"
-    },
-    {
-        "customer_id": "C00010",
-        "customer_name": "Kimani",
-        "location": "Kim",
-        "contact": "12"
     }
 ]
