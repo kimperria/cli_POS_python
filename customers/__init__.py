@@ -35,14 +35,12 @@ def create_customer():
                 customer_id = "C000" + str(id)
                 customer_account_info = {}
                 customer = {
-                    "name": name,
+                    "customer_name": name,
                     "location": location,
                     "contact": contact
                 }
             customer_account_info[customer_id] = customer
-            print(customer_account_info)
             data.append(customer_account_info)
-            print(data)
             print('Please wait!! Saving to database...')
             with open(customers_database, "w") as customer_file:
                 json.dump(data, customer_file, indent=4)
@@ -58,9 +56,18 @@ def display_all_customer_accounts():
     '''
     Show all customer accounts
     '''
-    all_accounts = CustomerProfile.display_customer_accounts()
+    # all_accounts = CustomerProfile.display_customer_accounts()
+    all_accounts = read_customer_database()
     print('List of all customer accounts')
-    print(all_accounts)
+    # print(all_accounts)
+    for customer in all_accounts:
+        for account in customer.keys():
+            # print(f'customer ac: {account}')
+            id = account
+            for info in customer.values():
+                print(f'info {info}')
+            print(customer)
+        # print(f'Customer ID : {id}')
 
 
 
