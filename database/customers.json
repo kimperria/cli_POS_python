@@ -36,5 +36,30 @@
             "location": "45",
             "contact": "55"
         }
+    },
+    {
+        "C0007": {
+            "customer_name": "Kimani",
+            "location": "kainid",
+            "contact": "ndia"
+        }
+    },
+    {
+        "customer_id": "C0008",
+        "customer_name": "Kimani",
+        "location": "ki",
+        "contact": "ki"
+    },
+    {
+        "customer_id": "C0009",
+        "customer_name": "Jane",
+        "location": "Doe",
+        "contact": "USA"
+    },
+    {
+        "customer_id": "C00010",
+        "customer_name": "Kimani",
+        "location": "Kim",
+        "contact": "12"
     }
 ]

@@ -24,27 +24,28 @@ def create_customer():
     contact = input('''Enter customer contact: ''')
     print('Creating customer account...')
     try:
-        if data == []:
-            print('No customers in DB')
-            id = 1
-            customer_id = "C000" + str(id)
-        elif data != []:
-            id = 1
-            for customer in data:
-                id = id + 1
-                customer_id = "C000" + str(id)
-                customer_account_info = {}
-                customer = {
-                    "customer_name": name,
-                    "location": location,
-                    "contact": contact
-                }
-            customer_account_info[customer_id] = customer
-            data.append(customer_account_info)
-            print('Please wait!! Saving to database...')
-            with open(customers_database, "w") as customer_file:
-                json.dump(data, customer_file, indent=4)
-            print("Customer Account Created Successfully")
+        new_customer = CustomerProfile.save_customer(name, location, contact)
+        # if data == []:
+        #     print('No customers in DB')
+        #     id = 1
+        #     customer_id = "C000" + str(id)
+        # elif data != []:
+        #     id = 1
+        #     for customer in data:
+        #         id = id + 1
+        #         customer_id = "C000" + str(id)
+        #         customer_account_info = {}
+        #         customer = {
+        #             "customer_name": name,
+        #             "location": location,
+        #             "contact": contact
+        #         }
+        #     customer_account_info[customer_id] = customer
+        #     data.append(customer_account_info)
+        #     print('Please wait!! Saving to database...')
+        #     with open(customers_database, "w") as customer_file:
+        #         json.dump(data, customer_file, indent=4)
+        #     print("Customer Account Created Successfully")
     except:
         print("Unable to create customer")
 

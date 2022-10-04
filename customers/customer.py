@@ -1,11 +1,14 @@
+import json
+
+
 class CustomerProfile:
     '''
     Class that helps to generate instances for creating a new customer account on this application
     '''
     # initialize list of customers as empty as the class variable
-    customers_list = []
+    # customers_list = []
 
-    def __init__(self, customer_name, location, contact):
+    def __init__(self, customer_id, customer_name, location, contact):
         '''
         Method that defines properties of this class.
 
@@ -13,6 +16,7 @@ class CustomerProfile:
             customer's name
             Their location and contact
         '''
+        self.customer_id = customer_id
         self.customer_name = customer_name
         self.location = location
         self.contact = contact
@@ -23,11 +27,37 @@ class CustomerProfile:
         '''
         return f'name:{self.customer_name}, location:{self.location}, contact:{self.contact}'
 
-    def save_customer(self):
+    @classmethod
+    def save_customer(cls, customer_name, location, contact):
         '''
         Method to create and save new customer infomation
         '''
-        CustomerProfile.customers_list.append(self)
+        customers_database = 'database/customers.json'
+        with open(customers_database, 'r') as customers_file:
+            customer_accounts = json.load(customers_file)
+            try:
+                if customer_accounts == []:
+                    print("There are no customer accounts in database")
+                    id = 1
+                    customer_id = 'C000' + str(id)
+                elif customer_accounts !=[]:
+                    id = 1
+                    for customer in customer_accounts:
+                        id = id + 1
+                        customer_id = 'C000' + str(id)
+                        customer = {
+                            "customer_id": customer_id,
+                            "customer_name":customer_name,
+                            "location": location,
+                            "contact":contact
+                        }
+                customer_accounts.append(customer)
+                print('Please wait!! Saving to database...')
+                with open(customers_database, "w") as customer_file:
+                    json.dump(customer_accounts, customer_file, indent=4)
+                    print("Customer Account Created Successfully")
+            except:
+                print("Unable to create customer account")
 
     def delete_customer(self):
         '''
