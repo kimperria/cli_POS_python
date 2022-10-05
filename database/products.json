@@ -12,5 +12,26 @@
         "quantity": 20,
         "price": 11.24,
         "description": "Stationery"
+    },
+    {
+        "product_id": "P0003",
+        "product_name": "Colgate",
+        "quantity": 40,
+        "price": 25.0,
+        "description": "Toothpaste"
+    },
+    {
+        "product_id": "P0004",
+        "product_name": "Salt",
+        "quantity": 100,
+        "price": 11.36,
+        "description": "Table salt"
+    },
+    {
+        "product_id": "P0005",
+        "product_name": "Fresh Fri",
+        "quantity": 6,
+        "price": 215.0,
+        "description": "Cooking oil"
     }
 ]

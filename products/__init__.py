@@ -43,36 +43,28 @@ def search_product_by_name():
         ProductProfile.search_product_by_name(product_name)
     elif product == False:
         print("Please view all the available products.")
-    # else:
-    #     print("An error occured")
-
-
+    else:
+        print("An error occured")
 
 
 def delete_product():
     product_name = input('Enter product name: ')
-    product_exist = ProductProfile.product_exist(product_name)
-    if product_exist == True:
-        find_account = ProductProfile.search_product_by_name(product_name=product_name)
-        print('Are you sure you want to delete ' + str(find_account.product_name))
+    product_to_delete = ProductProfile.product_exist(product_name)
+    if product_to_delete == True:
+        print('Are you sure you want to delete ' + product_name)
         print('This information will forever be lost!!!')
-        print('''Enter 1 to confirm delete 
-        or 
-Enter 00 to exit''')
-        danger = 0 
-        while danger != "0":
-            danger = input()
+        print(
+            '''Enter ID to confirm delete 
+            or 
+            Enter 00 to exit''')
+        product_id = input("Enter product ID: ")
+        danger = ""
+        while True:
+            danger = input('Type 1 ro confirm action!')
             if danger == "1":
-                ProductProfile.delete_product(find_account)
-                print("Product has been deleted!")
+                ProductProfile.delete_product(product_id)
             elif danger == "00":
                 delete_product()
             break
-    elif product_exist == False:
-        print('Seems the account you searched for does not exist')
-
-
-
-
-
-
+    elif product_to_delete == False:
+        print("Product does not exist")

@@ -34,7 +34,6 @@ class ProductProfile:
         product_database = 'database/products.json'
         with open(product_database, 'r') as products_file:
             products = json.load(products_file)
-            print(products)
             try:
                 if products == []:
                     id = 1
@@ -98,7 +97,7 @@ class ProductProfile:
             for product in products:
                 if product.get("product_name") == product_name:
                     isPresent = True
-                else:
+                elif product.get('product_name') != product_name:
                     isPresent = False
                     print("No product with such name")
                 return isPresent
@@ -123,12 +122,18 @@ class ProductProfile:
                 except:
                     print("Product not in system.")
 
-
-
-
-                
-    def delete_product(self):
+    @classmethod        
+    def delete_product(cls, product_id):
         '''
         Method to remove product instance
         '''
-        ProductProfile.products_list.remove(self)
+        product_database = 'database/products.json'
+        with open(product_database, 'r') as products_file:
+            products = json.load(products_file)
+            for product in products:
+                if product.get("product_id") == product_id:
+                    print(product)
+                    products.remove(product)
+                    print(products)
+                    with open(product_database, 'w') as products_file:
+                        json.dump(products, products_file, indent=4)
