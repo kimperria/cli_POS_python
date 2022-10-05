@@ -38,7 +38,12 @@ def display_all_customer_accounts():
     CustomerProfile.show_all_customers()
 
 
-
+def update_customer_account():
+    '''
+    Update customer account information
+    '''
+    id = input("Enter customer ID: ")
+    CustomerProfile.update_customer_account(id)
 
 def delete_customer_account():
     '''

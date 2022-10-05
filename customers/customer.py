@@ -86,6 +86,36 @@ class CustomerProfile:
                 i = i + 1
 
     @classmethod
+    def update_customer_account(cls, id):
+        '''
+        Method to update customer instance
+        '''
+        customers_database = 'database/customers.json'
+        with open(customers_database, 'r') as customers_file:
+            customer_accounts = json.load(customers_file)
+            for customer in customer_accounts:
+                id = customer["customer_id"]
+                name = customer["customer_name"]
+                location = customer["location"]
+                contact = customer["contact"]
+                try:
+                    print('Fetching customer')
+                    if customer.get("customer_id") == id:
+                        customer.update({
+                                "customer_id": id,
+                                "customer_name":name,
+                                "location": location,
+                                "contact":contact
+                        })
+                        print("Updates:", customer)
+                    # with open(customers_database, 'w') as customers_file:
+                    #     json.dump(customer_accounts, customers_file, indent=4)
+                except:
+                    print("Unable to update")
+
+        
+
+    @classmethod
     def delete_customer(cls, id):
         '''
         Method to remove customer instance

@@ -62,7 +62,8 @@ def dashboard ():
                 from customers import search_customer_by_name
                 search_customer_by_name()
             elif select_task == "4":
-                print("W.I.P")
+                from customers import update_customer_account
+                update_customer_account()
             elif select_task == "5":
                 from customers import delete_customer_account
                 delete_customer_account()
