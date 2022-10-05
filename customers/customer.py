@@ -1,5 +1,4 @@
 import json
-from textwrap import indent
 class CustomerProfile:
     '''
     Class that helps to generate instances for creating a new customer account on this application

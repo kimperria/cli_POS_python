@@ -9,8 +9,7 @@ def read_customer_database():
     with open(customers_database, 'r') as customers_file:
         customers = json.load(customers_file)
         return customers
-
-        
+       
 
 def create_customer():
     '''
@@ -27,9 +26,9 @@ def create_customer():
     except:
         print("Unable to create customer")
 
-
-
-
+def search_customer_by_name():
+    name = input("Enter name: ")
+    CustomerProfile.search_customer_by_name(name)
 
 def display_all_customer_accounts():
     '''
@@ -70,10 +69,3 @@ Enter 00 to exit''')
             break
     elif account_exist == False:
         print('Seems the account you searched for does not exist')
-
-
-def search_customer_by_name():
-    name = input("Enter name: ")
-    CustomerProfile.search_customer_by_name(name)
-
-

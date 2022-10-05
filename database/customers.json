@@ -58,5 +58,11 @@
         "customer_name": "Dan",
         "location": "Kilifi",
         "contact": "753"
+    },
+    {
+        "customer_id": "C00011",
+        "customer_name": "Isaac",
+        "location": "Nakuru",
+        "contact": "456"
     }
 ]

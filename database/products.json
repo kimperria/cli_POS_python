@@ -1,1 +1,16 @@
-{"P0001": "{\"product_name\": \"Kiwi\", \"quantity\": \"10\", \"price\": \"200\", \"description\": \"Shoe shine product\"}"}
+[
+    {
+        "product_id": "P0001",
+        "product_name": "Kiwi",
+        "quantity": 20,
+        "price": 50.2,
+        "description": "Shoe polish"
+    },
+    {
+        "product_id": "P0002",
+        "product_name": "Bic Biro Pen",
+        "quantity": 20,
+        "price": 11.24,
+        "description": "Stationery"
+    }
+]
