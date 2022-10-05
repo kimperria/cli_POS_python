@@ -24,9 +24,27 @@ def display_all_products():
     '''
     Show all products
     '''
-    all_products = ProductProfile.display_products()
-    print('List of all products')
-    print(all_products)
+    print('*****************************')
+    print('List of available products')
+    print('*****************************')
+    ProductProfile.display_all_products()
+
+
+def search_product_by_name():
+    '''
+    Filter product by name
+    '''
+    product_name = input('Enter product name: ')
+    product = ProductProfile.product_exist(product_name)
+    if product == True:
+        print("***************")
+        print("Item found")
+        print("***************")
+        ProductProfile.search_product_by_name(product_name)
+    elif product == False:
+        print("Please view all the available products.")
+    # else:
+    #     print("An error occured")
 
 
 

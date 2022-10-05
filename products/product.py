@@ -5,8 +5,6 @@ class ProductProfile:
     '''
     Class that helps to generate instances for creating a new product in this application
     '''
-    # initialize list of product as empty as the class variable
-    products_list = []
 
     def __init__(self, product_id ,product_name, quantity, price, description):
         '''
@@ -67,11 +65,43 @@ class ProductProfile:
             except:
                 print('Unable to create product')
 
-    def delete_product(self):
+    @classmethod
+    def display_all_products(cls):
         '''
-        Method to remove product instance
+        Show all product accounts
         '''
-        ProductProfile.products_list.remove(self)
+        product_database = 'database/products.json'
+        with open(product_database, 'r') as products_file:
+            products = json.load(products_file)
+            for product in products:
+                id = product["product_id"]
+                product_name = product['product_name']
+                product_quantity = product['quantity']
+                product_price = product['price']
+                product_description = product['description']
+                print(f'Product ID : {id}')
+                print(f'Product Name : {product_name}')
+                print(f'Quantity in store : {product_quantity}')
+                print(f'Price : {product_price}')
+                print(f'Description : {product_price}')
+                print('\n\n')
+
+    @classmethod
+    def product_exist(cls, product_name):
+        '''
+        Method to check product by name
+        '''
+        product_database = 'database/products.json'
+        isPresent = False
+        with open(product_database, 'r') as products_file:
+            products = json.load(products_file)
+            for product in products:
+                if product.get("product_name") == product_name:
+                    isPresent = True
+                else:
+                    isPresent = False
+                    print("No product with such name")
+                return isPresent
 
     @classmethod
     def search_product_by_name(cls, product_name):
@@ -83,25 +113,22 @@ class ProductProfile:
         Return:
             Product found in list
         '''
-        #loop the contact list
-        for product in cls.products_list:
-            if product.product_name == product_name:
-                return product
+        product_database = 'database/products.json'
+        with open(product_database, 'r') as products_file:
+            products = json.load(products_file)
+            for product in products:
+                try: 
+                    if product.get("product_name") == product_name:
+                        print(product)
+                except:
+                    print("Product not in system.")
 
-    @classmethod
-    def product_exist(cls, product_name):
-        '''
-        Method to check product by name
-        '''
-        for product in cls.products_list:
-            if product.product_name == product_name:
-                return True
-        return False
 
-    @classmethod
-    def display_products(cls):
-        '''
-        Show all product accounts
-        '''
-        return cls.products_list
+
+
                 
+    def delete_product(self):
+        '''
+        Method to remove product instance
+        '''
+        ProductProfile.products_list.remove(self)

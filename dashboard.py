@@ -21,8 +21,9 @@ def dashboard ():
             select_task = input('''
             1. Create product 
             2. View product list
-            3. Update product infomation
-            4. Delete product 
+            3. Search product by name
+            4. Update product infomation
+            5. Delete product 
             00. Back to dashboard ''')
 
             if select_task == "1":
@@ -32,7 +33,8 @@ def dashboard ():
                 from products import display_all_products
                 display_all_products()
             elif select_task == "3":
-                print('W.I.P')
+                from products import search_product_by_name
+                search_product_by_name()
             elif select_task == "4":
                 from products import delete_product
                 delete_product()
