@@ -1,3 +1,4 @@
+from dashboard import dashboard
 from .product import ProductProfile
 products_database = 'database/products.json'       
 
@@ -16,8 +17,6 @@ def create_product():
         ProductProfile.save_product(product_name, quantity, price, description)
     except:
         print("Something went wrong")
-
-
 
 
 def display_all_products():
@@ -46,6 +45,14 @@ def search_product_by_name():
     else:
         print("An error occured")
 
+def update_product():
+    '''
+    Update product instance
+    '''
+    product_id = input('Enter ID: ')
+    product = ProductProfile.search_product_by_id(product_id)
+    print(product)
+
 
 def delete_product():
     product_name = input('Enter product name: ')
@@ -53,18 +60,14 @@ def delete_product():
     if product_to_delete == True:
         print('Are you sure you want to delete ' + product_name)
         print('This information will forever be lost!!!')
-        print(
-            '''Enter ID to confirm delete 
-            or 
-            Enter 00 to exit''')
         product_id = input("Enter product ID: ")
         danger = ""
         while True:
-            danger = input('Type 1 ro confirm action!')
+            danger = input('Type 1 to confirm action or 00 to go back!')
             if danger == "1":
                 ProductProfile.delete_product(product_id)
             elif danger == "00":
-                delete_product()
+                dashboard()
             break
     elif product_to_delete == False:
         print("Product does not exist")

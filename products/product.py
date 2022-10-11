@@ -91,16 +91,13 @@ class ProductProfile:
         Method to check product by name
         '''
         product_database = 'database/products.json'
+        file = open(product_database, 'r')
+        products = json.load(file)
         isPresent = False
-        with open(product_database, 'r') as products_file:
-            products = json.load(products_file)
-            for product in products:
-                if product.get("product_name") == product_name:
-                    isPresent = True
-                elif product.get('product_name') != product_name:
-                    isPresent = False
-                    print("No product with such name")
-                return isPresent
+        for product in products:
+            if product.get("product_name") == product_name:
+                isPresent = True
+        return isPresent
 
     @classmethod
     def search_product_by_name(cls, product_name):
@@ -122,18 +119,35 @@ class ProductProfile:
                 except:
                     print("Product not in system.")
 
+    @classmethod
+    def search_product_by_id(cls, product_id):
+        '''
+        Method to search product bt ID
+        '''
+        product_database = 'database/products.json'
+        with open(product_database, 'r') as products_file:
+            products = json.load(products_file)
+            for product in products:
+                try: 
+                    if product.get("product_id") == product_id:
+                        print(product)
+                    elif product.get("product_id") != product_id:
+                        print("Product not in system.")
+                except:
+                    print("Product not in system.")
+
     @classmethod        
     def delete_product(cls, product_id):
         '''
         Method to remove product instance
         '''
         product_database = 'database/products.json'
-        with open(product_database, 'r') as products_file:
-            products = json.load(products_file)
-            for product in products:
-                if product.get("product_id") == product_id:
-                    print(product)
-                    products.remove(product)
-                    print(products)
-                    with open(product_database, 'w') as products_file:
-                        json.dump(products, products_file, indent=4)
+        file = open(product_database, 'r')
+        products = json.load(file)
+        for product in products:
+            if product.get("product_id") == product_id:
+                print(product)
+                products.remove(product)
+                print(products)
+                with open(product_database, 'w') as products_file:
+                    json.dump(products, products_file, indent=4)
