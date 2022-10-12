@@ -74,7 +74,7 @@ Enter 00 to exit''')
             danger = input("Type 1 to confirm action!")
             if danger == "1":
                 CustomerProfile.delete_customer(id)
-                print("Account has been deleted!")
+                print(f"{customer_account_name}'s Account has been deleted!")
             elif danger == "00":
                 delete_customer_account()
             break

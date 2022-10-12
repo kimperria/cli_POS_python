@@ -180,8 +180,11 @@ class ProductProfile:
         products = json.load(file)
         for product in products:
             if product.get("product_id") == product_id:
-                print(product)
                 products.remove(product)
-                print(products)
+                id = product["product_id"]
+                name = product["product_name"]
+                print(f"Product ID: {id}")
+                print(f"Product Name: {name}")
+                print('\n\n')
                 with open(product_database, 'w') as products_file:
                     json.dump(products, products_file, indent=4)

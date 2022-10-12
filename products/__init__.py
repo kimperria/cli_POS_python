@@ -70,16 +70,18 @@ def delete_product():
     product_name = input('Enter product name: ')
     product_to_delete = ProductProfile.product_exist(product_name)
     if product_to_delete == True:
+        ProductProfile.search_product_by_name(product_name)
         print('Are you sure you want to delete ' + product_name)
         print('This information will forever be lost!!!')
         product_id = input("Enter product ID: ")
-        danger = ""
+        danger = 0
         while True:
             danger = input('Type 1 to confirm action or 00 to go back!')
             if danger == "1":
                 ProductProfile.delete_product(product_id)
+                print(f"{product_name}'s Account has been deleted!")
             elif danger == "00":
-                dashboard()
+                delete_product()
             break
     elif product_to_delete == False:
         print("Product does not exist")

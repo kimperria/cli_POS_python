@@ -115,10 +115,11 @@ class CustomerProfile:
         Method to remove customer instance
         '''
         customers_database = 'database/customers.json'
-        with open(customers_database, 'r') as customers_file:
-            customer_accounts = json.load(customers_file)
-            i = 0
-            for customer in customer_accounts:
+        file = open(customers_database, 'r')
+        customer_accounts = json.load(file)
+        for customer in customer_accounts:
+            if customer.get("customer_id") == id:
+                customer_accounts.remove(customer)
                 id = customer["customer_id"]
                 name = customer["customer_name"]
                 location = customer["location"]
@@ -128,14 +129,8 @@ class CustomerProfile:
                 print(f"Customer Location: {location}")
                 print(f"Customer Contact: {contact}")
                 print('\n\n')
-                try:
-                    if customer.get("customer_id") == id:
-                        customer_accounts.remove(customer)
-                        print(customer)
-                    with open(customers_database, 'w') as customers_file:
-                        json.dump(customer_accounts, customers_file, indent=4)
-                except:
-                    print("Unable to delete customer")
+                with open(customers_database, 'w') as customers_file:
+                    json.dump(customer_accounts, customers_file, indent=4)
 
     @classmethod
     def search_customer_by_name(cls, customer_name):
