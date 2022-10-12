@@ -78,8 +78,14 @@ def dashboard ():
                 dashboard()
             else:
                 options == "2"
-
-
+        elif options == '3':
+            print("Purchases section")
+            select_task = input('''
+            1. Buy Item(s)
+            2. View History
+            ''')
+            from purchases import purchase_items
+            purchase_items()
         
         elif options == "0":
             print("Application is closing")
