@@ -10,11 +10,52 @@
 
 ## Project Overview
 ---
-This project is a command line-driven point-of-sale system built with Python. 
+This project is a command line-driven point-of-sale system built with Python. It is a single-user application that centers around CRUD operations in customers, products, and purchase modules. The objectives of this project were to implement OOP language concepts, log/display responses and system output on the command line interface as well as to allow the user to navigate application functionalities of this application according to the selected choices. 
 
 ##  About Project
 ---
+
+- Entry file: main.py
+- Interface: dashboard.py
+- Instance unique identifier(Key): ID 
+- License: MIT
+
+1. Customer Module
+    This module provides options through the interface that enable the handling of CRUD operations in the customer instances of the type CustomerProfile class. In this section, the user is prompted to create a new customer account, view customer accounts, delete a customer account, and or update customer account records. Other customer query options are reading customer information by either ID or name, and customer account instance validation by implementing unit testing to check whether the instance of that class exists.
+    Related data and information from this module are stored in and accessed from the customer.json file in the database folder.
+
+    Format sample:
+    ```
+        [
+            {
+                "customer_id": "C0001",
+                "customer_name": "Bold User",
+                "location": "Nairobi, Kenya",
+                "contact": "254"
+            },
+        ]
+    ```
+2. Product Module
+    This feature allows selecting options to handle create, read, update and delete functionalities on a product instance of type ProductProfile class. Similar to the customer module, the user can perform adding products, view products by name or product id, update product information and delete product operations.
+    Related data and information from this module are stored in and accessed from the product.json file in the database folder.
+
+    Format sample:
+    ```
+        [
+            {
+                "product_id": "P0001",
+                "product_name": "Great Product",
+                "quantity": 20,
+                "price": 50.28,
+                "description": "Tell something nice about the product"
+            },
+        ]
+    ```
+3. Purchases Module
 ### Features
+
+Receipts
+ Upon successful purchase, the user can view their receipt.
 
 ### Technologies used
 Language: Python version 3.8
@@ -33,7 +74,7 @@ Project flow chart with [Miro](https://miro.com/app/board/uXjVPTFk5d4=/?share_li
 #### How to install this project:
     - Clone this repo, run:
         git clone https://github.com/John-Kimani/cli_POS_python.git
-    - Move into project folder:
+    - Move into the project folder:
         cd cli_POS_python
     - Open project with IDE i.e VsCode run:
         code .
