@@ -43,20 +43,28 @@ def search_product_by_name():
     elif product == False:
         print("Please view all the available products.")
     else:
-        print("An error occured")
+        print("An error occured. Please contact Admin")
 
 def update_product():
     '''
     Update product instance
     '''
     product_id = input('Enter ID: ')
-    
-    ProductProfile.search_product_by_id(product_id)
-    product_name = input('Enter new name: ')
-    quantity = int(input('''Enter quantity received: '''))
-    price = float(input('''Enter price: '''))
-    description = input('''Tell about the product: ''')
-    ProductProfile.update_product(product_id=product_id, product_name = product_name, quantity = quantity, price = price, description = description)
+    product = ProductProfile.product_exist_by_id(product_id)
+    if product == True:
+        ProductProfile.search_product_by_id(product_id)
+        product_name = input('Enter new name: ')
+        quantity = int(input('''Enter quantity received: '''))
+        price = float(input('''Enter price: '''))
+        description = input('''Tell about the product: ''')
+        ProductProfile.update_product(product_id=product_id, product_name = product_name, quantity = quantity, price = price, description = description)
+    elif product == False:
+        print('Product with that ID does not exist!')
+        print("!!!!!!!!!!!!!!!!!!!!!!!")
+        print("Please try again...")
+        update_product()
+    else:
+        print("An error occured. Please contact Admin")
 
 
 def delete_product():

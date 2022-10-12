@@ -136,6 +136,20 @@ class ProductProfile:
                     break
 
     @classmethod
+    def product_exist_by_id(cls, product_id):
+        '''
+        Validation method by ID
+        '''
+        product_database = 'database/products.json'
+        file = open(product_database, 'r')
+        products = json.load(file)
+        isPresent = False
+        for product in products:
+            if product.get("product_id") == product_id:
+                isPresent = True
+        return isPresent
+
+    @classmethod
     def update_product(self, product_id, product_name, quantity, price, description):
         product_database = 'database/products.json'
         file = open(product_database, 'r')
@@ -150,8 +164,11 @@ class ProductProfile:
                     "price": price,
                     "description": description
                 })
+                print('Saving changes ...')
         with open(product_database, 'w') as products_file:
             json.dump(products, products_file, indent=4)
+
+
 
     @classmethod        
     def delete_product(cls, product_id):
