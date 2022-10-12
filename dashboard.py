@@ -79,13 +79,22 @@ def dashboard ():
             else:
                 options == "2"
         elif options == '3':
-            print("Purchases section")
-            select_task = input('''
-            1. Buy Item(s)
-            2. View History
-            ''')
-            from purchases import purchase_items
-            purchase_items()
+            while True:
+                print("Purchases section")
+                select_task = input('''
+                1. Buy Item(s)
+                2. View History
+                00. Go back to Dashboard
+                ''')
+                if select_task == '1':
+                    from purchases import purchase_items
+                    purchase_items()
+                elif select_task == '2':
+                    print('W.I.P')
+                elif select_task == '00':
+                    print("#############")
+                    print('Back to Dashboard.')
+                    dashboard()
         
         elif options == "0":
             print("Application is closing")

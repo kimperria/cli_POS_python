@@ -134,6 +134,7 @@ class ProductProfile:
                 else:
                     print("Product not in system.")
                     break
+            return product
 
     @classmethod
     def product_exist_by_id(cls, product_id):
