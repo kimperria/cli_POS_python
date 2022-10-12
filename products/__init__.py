@@ -52,7 +52,6 @@ def update_product():
     product_id = input('Enter ID: ')
     product = ProductProfile.product_exist_by_id(product_id)
     if product == True:
-        ProductProfile.search_product_by_id(product_id)
         product_name = input('Enter new name: ')
         quantity = int(input('''Enter quantity received: '''))
         price = float(input('''Enter price: '''))

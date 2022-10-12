@@ -85,32 +85,27 @@ class CustomerProfile:
                 i = i + 1
 
     @classmethod
-    def update_customer_account(cls, id):
+    def update_customer_account(self, customer_id, customer_name, location, contact):
         '''
         Method to update customer instance
         '''
         customers_database = 'database/customers.json'
-        with open(customers_database, 'r') as customers_file:
-            customer_accounts = json.load(customers_file)
-            for customer in customer_accounts:
-                id = customer["customer_id"]
-                name = customer["customer_name"]
-                location = customer["location"]
-                contact = customer["contact"]
-                try:
-                    print('Fetching customer')
-                    if customer.get("customer_id") == id:
-                        customer.update({
-                                "customer_id": id,
-                                "customer_name":name,
-                                "location": location,
-                                "contact":contact
-                        })
-                        print("Updates:", customer)
-                    # with open(customers_database, 'w') as customers_file:
-                    #     json.dump(customer_accounts, customers_file, indent=4)
-                except:
-                    print("Unable to update")
+        file = open(customers_database, 'r')
+        customer_accounts = json.load(file)
+        for customer in customer_accounts:
+            try:
+                if customer.get("customer_id") == customer_id:
+                    customer.update({
+                            "customer_id": customer_id,
+                            "customer_name":customer_name,
+                            "location": location,
+                            "contact":contact
+                    })
+                    print("Saving changes ...")
+                with open(customers_database, 'w') as customers_file:
+                    json.dump(customer_accounts, customers_file, indent=4)
+            except:
+                print("Unable to update")
 
         
 
@@ -184,4 +179,17 @@ class CustomerProfile:
                     print("No customer with such name")
             return isPresent
 
+    @classmethod
+    def customer_exist_by_id(cls, customer_id):
+        '''
+        Customer validation method 
+        '''
+        customers_database = 'database/customers.json'
+        isPresent = False
+        with open(customers_database, 'r') as customers_file:
+            customer_accounts = json.load(customers_file)
+            for customer in customer_accounts:
+                if customer.get("customer_id") == customer_id:
+                    isPresent = True
+            return isPresent
                 

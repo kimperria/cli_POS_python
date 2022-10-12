@@ -42,7 +42,18 @@ def update_customer_account():
     Update customer account information
     '''
     id = input("Enter customer ID: ")
-    CustomerProfile.update_customer_account(id)
+    state = CustomerProfile.customer_exist_by_id(id)
+    if state == True:
+        customer_name = input("Enter new name: ")
+        customer_location = input("Enter new location: ")
+        customer_contact = input('Enter new contact information: ')
+        CustomerProfile.update_customer_account(customer_id=id, customer_name=customer_name, location = customer_location, contact = customer_contact)
+    elif state == False:
+        print("Customer with that ID does not exist")
+        print("Please try again!")
+        update_customer_account()
+    else:
+        print("An error occured. Please contact Admin")
 
 def delete_customer_account():
     '''
