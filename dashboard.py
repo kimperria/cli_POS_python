@@ -36,8 +36,8 @@ def dashboard ():
                 from products import search_product_by_name
                 search_product_by_name()
             elif select_task == "4":
-                from products import delete_product
-                print('W.I.P')
+                from products import update_product
+                update_product()
             elif select_task == "5":
                 from products import delete_product
                 delete_product()

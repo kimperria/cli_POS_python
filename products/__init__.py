@@ -50,8 +50,13 @@ def update_product():
     Update product instance
     '''
     product_id = input('Enter ID: ')
-    product = ProductProfile.search_product_by_id(product_id)
-    print(product)
+    
+    ProductProfile.search_product_by_id(product_id)
+    product_name = input('Enter new name: ')
+    quantity = int(input('''Enter quantity received: '''))
+    price = float(input('''Enter price: '''))
+    description = input('''Tell about the product: ''')
+    ProductProfile.update_product(product_id=product_id, product_name = product_name, quantity = quantity, price = price, description = description)
 
 
 def delete_product():

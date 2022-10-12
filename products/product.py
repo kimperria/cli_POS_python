@@ -128,13 +128,30 @@ class ProductProfile:
         with open(product_database, 'r') as products_file:
             products = json.load(products_file)
             for product in products:
-                try: 
-                    if product.get("product_id") == product_id:
-                        print(product)
-                    elif product.get("product_id") != product_id:
-                        print("Product not in system.")
-                except:
+                if product.get("product_id") == product_id:
+                    print(product)
+                    break
+                else:
                     print("Product not in system.")
+                    break
+
+    @classmethod
+    def update_product(self, product_id, product_name, quantity, price, description):
+        product_database = 'database/products.json'
+        file = open(product_database, 'r')
+        products = json.load(file)
+
+        for product in products:
+            if product.get("product_id") == product_id:
+                product.update({
+                    "product_id": product_id,
+                    "product_name": product_name,
+                    "quantity": quantity,
+                    "price": price,
+                    "description": description
+                })
+        with open(product_database, 'w') as products_file:
+            json.dump(products, products_file, indent=4)
 
     @classmethod        
     def delete_product(cls, product_id):
