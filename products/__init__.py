@@ -50,7 +50,8 @@ def search_product_by_id():
     Filter products by ID
     '''
     product_id = input('Enter product ID: ')
-    ProductProfile.search_product_by_id(product_id=product_id)
+    new = ProductProfile.search_product_by_id(product_id=product_id)
+    print(new)
 
 def update_product():
     '''

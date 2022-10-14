@@ -125,18 +125,13 @@ class ProductProfile:
         Method to search product bt ID
         '''
         product_database = 'database/products.json'
-        with open(product_database, 'r') as products_file:
-            products = json.load(products_file)
-            print(products)
-            for product in products:
-                if product.get("product_id") == product_id:
-                    print(product)
-                    break
-                elif product.get('product_id') != product_id:
-                    print('Product not in the system')
-                    break
-                else:
-                    return product
+        file =  open(product_database, 'r')
+        products = json.load(file)
+        product = ""
+        for product in products:
+            if product.get("product_id") == product_id:
+                product = product
+        return product
 
     @classmethod
     def product_exist_by_id(cls, product_id):
