@@ -51,7 +51,6 @@ def search_product_by_id():
     '''
     product_id = input('Enter product ID: ')
     found = ProductProfile.product_exist_by_id(product_id)
-    print(found)
     if found == True:
         product = ProductProfile.search_product_by_id(product_id=product_id)
         print('**************')

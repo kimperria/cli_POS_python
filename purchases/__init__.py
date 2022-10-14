@@ -9,9 +9,11 @@ def purchase_items():
     '''
     customer_id = input('Enter your customer ID before purchase: ')
     if CustomerProfile.customer_exist_by_id(customer_id=customer_id):
-        print("Proceed")
+        customer = CustomerProfile.search_customer_by_id(customer_id).get('customer_name')
+        print('***********')
+        print(f"Welcome {customer}")
         while True:
-            print('Create order')
+            print('What would you like to buy?')
             print('***********')
             product_id = input('Enter product ID: ')
             product_ordered = ProductProfile.search_product_by_id(product_id)
@@ -68,6 +70,8 @@ def purchase_items():
                     except ValueError:
                         print("Unable to save order. Please contact admin.")
                         break
+                    print("*******************")
+                    print("Continue shopping?")
             elif quantity > product_quantity:
                 print("!!!!!!!!!!")
                 print('Amount asked is more than quantity available in stock.')
