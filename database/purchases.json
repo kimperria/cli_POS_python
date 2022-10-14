@@ -1,9 +1,16 @@
 [
     {
         "purchase_id": "S0001",
-        "bought_by": "C0001",
-        "product_name": "Kiwi",
+        "customer_id": "C0007",
+        "product": "Salt",
+        "quantity": 40,
+        "total_price": 454.4
+    },
+    {
+        "purchase_id": "S0002",
+        "customer_id": "C0007",
+        "product": "Colgate",
         "quantity": 10,
-        "price": 502.0
+        "total_price": 250.0
     }
 ]

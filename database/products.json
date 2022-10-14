@@ -16,14 +16,14 @@
     {
         "product_id": "P0003",
         "product_name": "Colgate",
-        "quantity": 40,
+        "quantity": 30,
         "price": 25.0,
         "description": "Toothpaste"
     },
     {
         "product_id": "P0004",
         "product_name": "Salt",
-        "quantity": 100,
+        "quantity": 60,
         "price": 11.36,
         "description": "Table salt"
     },
