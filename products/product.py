@@ -127,14 +127,16 @@ class ProductProfile:
         product_database = 'database/products.json'
         with open(product_database, 'r') as products_file:
             products = json.load(products_file)
+            print(products)
             for product in products:
                 if product.get("product_id") == product_id:
                     print(product)
                     break
-                else:
-                    print("Product not in system.")
+                elif product.get('product_id') != product_id:
+                    print('Product not in the system')
                     break
-            return product
+                else:
+                    return product
 
     @classmethod
     def product_exist_by_id(cls, product_id):

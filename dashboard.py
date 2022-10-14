@@ -17,35 +17,41 @@ def dashboard ():
         ''')
 
         if options == "1":
-            print("Products section")
-            select_task = input('''
-            1. Create product 
-            2. View product list
-            3. Search product by name
-            4. Update product infomation
-            5. Delete product 
-            00. Back to dashboard ''')
+            while True:
+                print("Products section")
+                select_task = input('''
+                1. Create product 
+                2. View product list
+                3. Search product by name
+                4. Search product by ID
+                5. Update product infomation
+                6. Delete product 
+                00. Back to dashboard ''')
 
-            if select_task == "1":
-                from products import create_product
-                create_product()
-            elif select_task == "2":
-                from products import display_all_products
-                display_all_products()
-            elif select_task == "3":
-                from products import search_product_by_name
-                search_product_by_name()
-            elif select_task == "4":
-                from products import update_product
-                update_product()
-            elif select_task == "5":
-                from products import delete_product
-                delete_product()
-            elif select_task == "00":
-                print('Taking you back to the dashboard')
-                dashboard()
-            else:
-                options == "2"
+                if select_task == "1":
+                    from products import create_product
+                    create_product()
+                elif select_task == "2":
+                    from products import display_all_products
+                    display_all_products()
+                elif select_task == "3":
+                    from products import search_product_by_name
+                    search_product_by_name()
+                elif select_task == "4":
+                    from products import search_product_by_id
+                    search_product_by_id()
+                elif select_task == "5":
+                    from products import update_product
+                    update_product()
+                elif select_task == "6":
+                    from products import delete_product
+                    delete_product()
+                elif select_task == "00":
+                    print('Taking you back to the dashboard')
+                    dashboard()
+                else:
+                    print('Warning!: Invalid input')
+                    print('Please check choices provided then try again.')
 
         elif options == "2":
             print("Customer Section")
