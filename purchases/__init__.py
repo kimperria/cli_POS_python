@@ -75,7 +75,38 @@ def purchase_items():
                             
                             ProductProfile.update_product(product_id=product_id, product_name=product_name, quantity=remaining_quantity, price=product_price, description=product_description)
 
+                            shop_again = ''
+                            while True:
+                                print('Continue Shopping? ')
+                                print('''Enter:
+                        1. To continue shopping 
+                        2. Proceed to checkout ''')
+                                check_out = input('Enter your choice...')
 
+                                if check_out != '':
+                                    if check_out == '1':
+                                        check_out = shop_again
+                                        break
+                                    elif check_out == '2':
+                                        shop_again = '2'
+                                        break
+                                    else:
+                                        print('Warning!: Invalid input')
+                                        print('Please check choices provided then try again.')
+                                        continue
+                                else:
+                                    print('Please choose one option')
+                                    print('Please choose one option. Please check choices provided then try again.')
+                                    continue
+                            
+                            if shop_again == '1':
+                                continue
+                            elif shop_again == '2':
+                                print('Do you want a receipt!!!')
+                                print('''Enter:
+                        1. Get your receipt 
+                        00. Finish without receipt ''')
+                            break
                     elif quantity_requested > product_quantity:
                         print('Warning')
                         print("!!!!!!!!!!")
@@ -87,26 +118,6 @@ def purchase_items():
             elif product_requested == False:
                 print('Warning !!!!')
                 print('Please enter valid ID')
-
-
-
-
-            # check_out = input('''Enter:
-            # 1. To continue shopping
-            # 2. To proceed to checkout ''')
-            # if check_out == "1":
-            #     '''
-            #     Make new sale
-            #     '''
-
-            # elif check_out == "2":
-            #     '''
-            #     Checkout
-            #     '''
-            # else:
-            #     print('Warning!: Invalid input')
-            #     print('Please check choices provided then try again.')
-
 
     else:
         print("Check your ID to be correct or create customer account in customers menu.")
