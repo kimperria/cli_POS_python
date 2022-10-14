@@ -50,8 +50,19 @@ def search_product_by_id():
     Filter products by ID
     '''
     product_id = input('Enter product ID: ')
-    new = ProductProfile.search_product_by_id(product_id=product_id)
-    print(new)
+    found = ProductProfile.product_exist_by_id(product_id)
+    print(found)
+    if found == True:
+        product = ProductProfile.search_product_by_id(product_id=product_id)
+        print('**************')
+        print('Product Found')
+        print('**************')
+        print(product)
+        print('**************')
+    elif found == False:
+        print('**************')
+        print('Product with such ID does not exist')
+        print('**************')
 
 def update_product():
     '''

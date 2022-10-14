@@ -155,7 +155,19 @@ class CustomerProfile:
                     print("No customer with such name")
             return isPresent
 
-
+    @classmethod
+    def search_customer_by_id(cls, customer_id):
+        '''
+        Method to search cutomer by ID
+        '''
+        customer_database = 'database/customers.json'
+        file =  open(customer_database, 'r')
+        customers = json.load(file)
+        customer = ""
+        for customer in customers:
+            if customer.get("customer_id") == customer_id:
+                customer = customer
+        return customer
 
     @classmethod
     def customer_exist(cls, customer_name):

@@ -115,7 +115,10 @@ class ProductProfile:
             for product in products:
                 try: 
                     if product.get("product_name") == product_name:
+                        print('*************')
+                        print('Item found')
                         print(product)
+                        print('*************')
                 except:
                     print("Product not in system.")
 

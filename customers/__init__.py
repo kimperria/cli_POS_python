@@ -28,7 +28,25 @@ def create_customer():
 
 def search_customer_by_name():
     name = input("Enter name: ")
+    found = CustomerProfile.customer_exist(name)
+    print(found)
     CustomerProfile.search_customer_by_name(name)
+
+def search_customer_by_id():
+    customer_id = input("Enter customer account ID: ")
+    found = CustomerProfile.customer_exist_by_id(customer_id)
+    if found == True:
+        customer = CustomerProfile.search_customer_by_id(customer_id)
+        print('**************')
+        print('Customer Account Found')
+        print('**************')
+        print(customer)
+        print('**************')
+    elif found == False:
+        print('**************')
+        print('Customer account with such ID does not exist')
+        print('**************')
+
 
 def display_all_customer_accounts():
     '''

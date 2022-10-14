@@ -26,7 +26,8 @@ def dashboard ():
                 4. Search product by ID
                 5. Update product infomation
                 6. Delete product 
-                00. Back to dashboard ''')
+                00. Back to dashboard 
+                ''')
 
                 if select_task == "1":
                     from products import create_product
@@ -54,36 +55,43 @@ def dashboard ():
                     print('Please check choices provided then try again.')
 
         elif options == "2":
-            print("Customer Section")
-            select_task = input('''
-            1. Create new customer account 
-            2. View all customers
-            3. Find customer by name
-            4. Update customer account 
-            5. Delete customer account
-            00. Back to dashboard ''')
+            while True:
+                print("Customer Section")
+                select_task = input('''
+                1. Create new customer account 
+                2. View all customers
+                3. Find cutomer account by ID
+                4. Find customer by name
+                5. Update customer account 
+                6. Delete customer account
+                00. Back to dashboard 
+                ''')
 
-            if select_task == "1":
-                from customers import create_customer
-                create_customer()
-            elif select_task == "2":
-                from customers import display_all_customer_accounts
-                display_all_customer_accounts()
-            elif select_task == "3":
-                from customers import search_customer_by_name
-                search_customer_by_name()
-            elif select_task == "4":
-                from customers import update_customer_account
-                update_customer_account()
-            elif select_task == "5":
-                from customers import delete_customer_account
-                delete_customer_account()
+                if select_task == "1":
+                    from customers import create_customer
+                    create_customer()
+                elif select_task == "2":
+                    from customers import display_all_customer_accounts
+                    display_all_customer_accounts()
+                elif select_task == "3":
+                    from customers import search_customer_by_id
+                    search_customer_by_id()
+                elif select_task == "4":
+                    from customers import search_customer_by_name
+                    search_customer_by_name()
+                elif select_task == "5":
+                    from customers import update_customer_account
+                    update_customer_account()
+                elif select_task == "6":
+                    from customers import delete_customer_account
+                    delete_customer_account()
 
-            elif select_task == "00":
-                print('Taking you back to the dashboard')
-                dashboard()
-            else:
-                options == "2"
+                elif select_task == "00":
+                    print('Taking you back to the dashboard')
+                    dashboard()
+                else:
+                    print('Warning!: Invalid input')
+                    print('Please check choices provided then try again.')
         elif options == '3':
             while True:
                 print("Purchases section")
@@ -101,9 +109,14 @@ def dashboard ():
                     print("#############")
                     print('Back to Dashboard.')
                     dashboard()
+                else:
+                    print('Warning!: Invalid input')
+                    print('Please check choices provided then try again.')
         
         elif options == "0":
             print("Application is closing")
             print("Thank you. See you soon!")
         else:
-            print('Please select a valid option')
+            print('Warning!!!')
+            print('Invalid input')
+            print('Please check choices provided then try again.')
