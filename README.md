@@ -52,25 +52,24 @@ This project is a command line-driven point-of-sale system built with Python. It
         ]
     ```
 3. Purchases Module
+    This module allows the user to make a purchase or view their purchase history. Upon customer validation, the user is prompted to select items to buy. Purchases can only be made of items available in stock, the user can either add a different item(s) to the cart or proceed to checkout. The receipts feature is nested as a submodule which enables printing out items bought and the total price. 
+
+    A user purchase history is saved upon completion of each sales transaction to facilitate the view purchase history function.
+
+    Related data and information from this module are stored in and accessed from the purchases.json and receipt.json files in the database folder.
 ### Features
 
-Receipts
- Upon successful purchase, the user can view their receipt.
+1. Receipts. 
+Upon each successful and complete purchase process, a sales receipt is printed out on the console showing transaction details.
 
 ### Technologies used
 Language: Python version 3.8
 IDE: pycharm, VSCode
 
-## Demo
----
 ### Project Illustrations
 Project flow chart with [Miro](https://miro.com/app/board/uXjVPTFk5d4=/?share_link_id=89794991126) click to view.
-### Screenshots
----
 
 ## Setup
-
-### Installation
 #### How to install this project:
     - Clone this repo, run:
         git clone https://github.com/John-Kimani/cli_POS_python.git

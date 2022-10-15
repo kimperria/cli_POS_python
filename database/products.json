@@ -9,14 +9,14 @@
     {
         "product_id": "P0002",
         "product_name": "Bic Biro Pen",
-        "quantity": 20,
+        "quantity": 18,
         "price": 11.24,
         "description": "Stationery"
     },
     {
         "product_id": "P0003",
         "product_name": "Colgate",
-        "quantity": 30,
+        "quantity": 20,
         "price": 25.0,
         "description": "Toothpaste"
     },
@@ -30,7 +30,7 @@
     {
         "product_id": "P0005",
         "product_name": "Fresh Fri",
-        "quantity": 6,
+        "quantity": 4,
         "price": 215.0,
         "description": "Cooking oil"
     }

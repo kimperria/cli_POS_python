@@ -1,6 +1,5 @@
 from customers import CustomerProfile
 from products import ProductProfile
-from purchases import *
 import json
 
 
@@ -13,6 +12,7 @@ def purchase_items():
         customer = CustomerProfile.search_customer_by_id(customer_id).get('customer_name')
         print('***********')
         print(f"Welcome {customer}")
+        receipts = []
         while True:
             print('***********')
             print('What would you like to buy? ')
@@ -59,6 +59,14 @@ def purchase_items():
                                     'quantity': quantity_requested,
                                     'total_price': product_total
                                     }
+
+                            receipt = {
+                                "product_name": product_name,
+                                "quantity": quantity_requested,
+                                "Total": product_total
+                            }
+                            receipts.append(receipt)
+                            print(receipts)
                             purchases.append(purchase)
                             print('**************')
                             print('Please wait!! Saving to database')
@@ -77,7 +85,6 @@ def purchase_items():
 
                             shop_again = ''
                             while True:
-                                print('Continue Shopping? ')
                                 print('''Enter:
                         1. To continue shopping 
                         2. Proceed to checkout ''')
@@ -85,7 +92,7 @@ def purchase_items():
 
                                 if check_out != '':
                                     if check_out == '1':
-                                        check_out = shop_again
+                                        shop_again = check_out
                                         break
                                     elif check_out == '2':
                                         shop_again = '2'
@@ -102,10 +109,41 @@ def purchase_items():
                             if shop_again == '1':
                                 continue
                             elif shop_again == '2':
-                                print('Do you want a receipt!!!')
-                                print('''Enter:
-                        1. Get your receipt 
-                        00. Finish without receipt ''')
+                                print('Thank you for shopping with us! Below is your receipt.')
+                                print("\n------------------------------------")
+                                print('-------------BINGU POS-----------------')
+                                print('--------OFFICIAL SALES RECEIPT---------')
+                                print('************************************')
+                                print("Customer name: ", customer)
+                                print("Purchase || Quantity || Total")
+                                print(receipts)
+                                grand_total = []
+                                for i in receipts:
+                                    grand_total.append(i.get('Total'))
+                                print(f"Total Amount = {str(sum(grand_total))}")
+                                print("\n------------------------------------")
+                                print('Goods once sold cannot be returned')
+                                print('************************************')
+                                print('Program developed by kimperria')
+                                print('************************************')
+
+                                receipts_database = 'database/receipt.json'
+                                history = {}
+                                with open(receipts_database, 'r') as receipts_file:
+                                    data = json.load(receipts_file)
+                                    if data == []:
+                                        id = 1
+                                        receipt_id = 'R000' + str(id)
+                                        history[customer_id] = receipts
+                                    elif data != []:
+                                        id = 1
+                                        for item in data:
+                                            id = id + 1
+                                            receipt_id = 'R000' + str(id)
+                                            history[customer_id] = receipts
+                                    data.append(history)
+                                    with open(receipts_database, 'w') as receipts_file:
+                                        json.dump(data, receipts_file, indent=4)
                             break
                     elif quantity_requested > product_quantity:
                         print('Warning')

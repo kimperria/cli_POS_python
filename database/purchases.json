@@ -12,5 +12,26 @@
         "product": "Colgate",
         "quantity": 10,
         "total_price": 250.0
+    },
+    {
+        "purchase_id": "S0003",
+        "customer_id": "C00010",
+        "product": "Fresh Fri",
+        "quantity": 2,
+        "total_price": 430.0
+    },
+    {
+        "purchase_id": "S0004",
+        "customer_id": "C00010",
+        "product": "Bic Biro Pen",
+        "quantity": 2,
+        "total_price": 22.48
+    },
+    {
+        "purchase_id": "S0005",
+        "customer_id": "C0009",
+        "product": "Colgate",
+        "quantity": 10,
+        "total_price": 250.0
     }
 ]

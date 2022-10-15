@@ -1,0 +1,25 @@
+[
+    {
+        "C00010": [
+            {
+                "product_name": "Fresh Fri",
+                "quantity": 2,
+                "Total": 430.0
+            },
+            {
+                "product_name": "Bic Biro Pen",
+                "quantity": 2,
+                "Total": 22.48
+            }
+        ]
+    },
+    {
+        "C0009": [
+            {
+                "product_name": "Colgate",
+                "quantity": 10,
+                "Total": 250.0
+            }
+        ]
+    }
+]
